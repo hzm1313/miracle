@@ -1,13 +1,10 @@
 #!/usr/bin/env python
-import sys
 
 import os
+import sys
+from svm import *
+from svm import __all__ as svm_all
 
-from miracleh.lib.svm import *
-from miracleh.lib.svm import __all__ as svm_all
-
-from miracleh.lib.svm import libsvm, toPyModel, svm_parameter, svm_problem, PRECOMPUTED, c_double, EPSILON_SVR, NU_SVR, \
-	gen_svm_nodearray, ONE_CLASS, NU_SVC
 
 __all__ = ['evaluations', 'svm_load_model', 'svm_predict', 'svm_read_problem',
            'svm_save_model', 'svm_train'] + svm_all

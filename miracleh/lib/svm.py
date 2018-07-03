@@ -14,7 +14,6 @@ __all__ = ['libsvm', 'svm_problem', 'svm_parameter',
            'POLY', 'PRECOMPUTED', 'PRINT_STRING_FUN', 'RBF',
            'SIGMOID', 'c_double', 'svm_model']
 
-
 try:
 	dirname = path.dirname(path.abspath(__file__))
 	if sys.platform == 'win32':
