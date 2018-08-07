@@ -1,5 +1,6 @@
 import asyncio
 import websockets
+import chat.redis.redisChatUtils as redisChatUtils
 
 async def echo(websocket, path):
     async for message in websocket:
@@ -7,7 +8,12 @@ async def echo(websocket, path):
 
 def handleMessage(message):
     #优先进行Key，value模式的回答
-    print()
+    message  = redisChatUtils.getHashKeyAll(name=message)
+    if message != '':
+        print(message)
+    else:
+        #开始特殊的回答
+        return 'Pursuit Excellence'
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(
