@@ -5,3 +5,6 @@ chat_next = "_next"
 chat_pre = "_pre"
 
 redis_chat_pre = "chat:"
+
+redis_encode_charest = 'unicode_escape'
+charest = 'utf-8'

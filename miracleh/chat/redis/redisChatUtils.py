@@ -1,7 +1,8 @@
 import json
 
 import redis
-import chat.conf.coomonConf as conf
+import chat.conf.CoomonConf as conf
+from chat.coomon.CommonUtils import convert
 
 pool = redis.ConnectionPool(host=conf.redis_host, port=conf.redis_port, encoding='GBK')
 
@@ -38,7 +39,6 @@ def getHashKeySize(name):
     r = redis.Redis(connection_pool=pool)
     return r.hlen(name=conf.redis_chat_pre + name)
 
-
 if __name__ == "__main__":
     # 第一层
     keyMain = 'main'
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     chatCommonObj['content'] = 'EasyGo微信配置问题'
     chatCommonObj['key'] = keyMain + ':wxType'
     chatCommonObj['isHaveNext'] = 'true'
-    setHashKey(keyMain,json.dumps(chatCommonObj))
+    setHashKey(keyMain, 1, json.dumps(chatCommonObj))
     chatCommonObj = {}
     chatCommonObj['content'] = 'EasyGo微信支付问题---暂未完善'
     chatCommonObj['key'] = ''
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     chatCommonObj['isHaveNext'] = 'false'
     setHashKey(key, 2, json.dumps(chatCommonObj))
 
-    t = getHashKeyAll(name=key)
-    print(t)
-    print(json.loads(t))
+    result = getHashKeyAll(name=key)
+    resultStr = str(convert(result))
+    print(resultStr)
     print(getHashKeySize(name=key))

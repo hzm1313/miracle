@@ -1,6 +1,6 @@
 import asyncio
 import websockets
-import chat.redis.redisChatUtils as redisChatUtils
+import chat.redis.RedisChatUtils as redisChatUtils
 
 async def echo(websocket, path):
     async for message in websocket:
